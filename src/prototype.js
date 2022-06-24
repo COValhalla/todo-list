@@ -1,22 +1,28 @@
 // Creates objects and stores them in an array.
-let todoStorage = [];
-
-const TodoFactory = (title, description, dueDate, priority, project) => {
-  todoID = todoCounter();
-  return { todoID, title, description, dueDate, priority, project };
-};
-
-function newTodo(title, description, dueDate, priority, project) {
-  const newTodo = TodoFactory(title, description, dueDate, priority, project);
-  todoStorage.push(newTodo);
-}
-
+const todoStorage = [];
 function todoCounter() {
-  if (typeof todoCounter.counter == 'undefined') {
+  if (typeof todoCounter.counter === 'undefined') {
     todoCounter.counter = 0;
   }
   todoCounter.counter++;
   return todoCounter.counter;
+}
+const TodoFactory = (title, description, dueDate, priority, project) => {
+  todoID = todoCounter();
+  return {
+    todoID,
+    title,
+    description,
+    dueDate,
+    priority,
+    project,
+  };
+};
+
+function newTodo(title, description, dueDate, priority, project) {
+  const newTodo = TodoFactory(title, description, dueDate, priority, project);
+
+  todoStorage.push(newTodo);
 }
 
 newTodo('a title', 'a description', '08/15/22', 'low', 'project title');
