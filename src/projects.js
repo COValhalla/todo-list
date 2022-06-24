@@ -1,4 +1,4 @@
-projectStorage = [];
+let projectStorage = [];
 
 const projectFactory = (title, description) => {
   const projectTitle = () => console.log(title);
