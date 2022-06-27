@@ -32,6 +32,58 @@
   grid-column: 2/3;
 }
 
+.main__projects {
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 4rem 0 4rem;
+  min-height: 10%;
+  gap: 1rem;
+}
+.main__projects__title {
+  font-size: 3rem;
+}
+
+.main__projects__description {
+  font-size: 1.3rem;
+}
+
+.main__todos {
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 4rem 0 4rem;
+}
+
+.main__todos__card {
+  font-size: 1.2rem;
+  display: grid;
+  gap: 1rem;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.card__title {
+  font-weight: 600;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.card__dueDate {
+  grid-column: 2/3;
+  grid-row: 1/2l;
+}
+.card__priority {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+.card__description {
+  grid-column: 1/4;
+  grid-row: 2/3;
+}
+
 .btn {
   align-items: center;
   background-color: #ffffff;

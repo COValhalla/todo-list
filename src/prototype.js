@@ -41,29 +41,4 @@ export default function newTodo(
   todoStorage.push(aNewTodo);
   addTodoDOM(aNewTodo);
 }
-
-
-
-const todoStorage = [];
-
-function todoCounter() {
-  if (typeof todoCounter.counter === 'undefined') {
-    todoCounter.counter = 0;
-  }
-  todoCounter.counter += 1;
-  return todoCounter.counter;
-}
-
 // more functions...
-
-export default function newTodo(
-  title,
-  description,
-  dueDate,
-  priority,
-  project,
-) {
-  const aNewTodo = TodoFactory(title, description, dueDate, priority, project);
-  todoStorage.push(aNewTodo);
-  addTodoDOM(aNewTodo);
-}
