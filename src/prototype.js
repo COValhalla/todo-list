@@ -1,14 +1,15 @@
-// Creates objects and stores them in an array.
+// Prototype code, stores new todo objects in an array. Adds them to the DOM.
 const todoStorage = [];
+
 function todoCounter() {
   if (typeof todoCounter.counter === 'undefined') {
     todoCounter.counter = 0;
   }
-  todoCounter.counter++;
+  todoCounter.counter += 1;
   return todoCounter.counter;
 }
 const TodoFactory = (title, description, dueDate, priority, project) => {
-  todoID = todoCounter();
+  const todoID = todoCounter();
   return {
     todoID,
     title,
@@ -19,15 +20,50 @@ const TodoFactory = (title, description, dueDate, priority, project) => {
   };
 };
 
-function newTodo(title, description, dueDate, priority, project) {
-  const newTodo = TodoFactory(title, description, dueDate, priority, project);
+function addTodoDOM(obj) {
+  const todoSection = document.querySelector('.main__todos');
+  const todoDIV = document.createElement('div');
+  todoDIV.classList.add('todo');
+  todoDIV.setAttribute('id', `todo${obj.todoID}`);
+  todoDIV.textContent = obj.title;
 
-  todoStorage.push(newTodo);
+  todoSection.append(todoDIV);
 }
 
-newTodo('a title', 'a description', '08/15/22', 'low', 'project title');
-newTodo('a title2', 'a description2', '08/15/22', 'low', 'project title2');
-newTodo('a title3', 'a description3', '08/15/22', 'low', 'project title3');
-todoStorage;
+export default function newTodo(
+  title,
+  description,
+  dueDate,
+  priority,
+  project,
+) {
+  const aNewTodo = TodoFactory(title, description, dueDate, priority, project);
+  todoStorage.push(aNewTodo);
+  addTodoDOM(aNewTodo);
+}
 
-todoStorage[0].title;
+
+
+const todoStorage = [];
+
+function todoCounter() {
+  if (typeof todoCounter.counter === 'undefined') {
+    todoCounter.counter = 0;
+  }
+  todoCounter.counter += 1;
+  return todoCounter.counter;
+}
+
+// more functions...
+
+export default function newTodo(
+  title,
+  description,
+  dueDate,
+  priority,
+  project,
+) {
+  const aNewTodo = TodoFactory(title, description, dueDate, priority, project);
+  todoStorage.push(aNewTodo);
+  addTodoDOM(aNewTodo);
+}
