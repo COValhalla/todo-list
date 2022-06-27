@@ -54,6 +54,7 @@
     Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
   padding: 4rem 4rem 0 4rem;
 }
 
@@ -67,7 +68,6 @@
 }
 
 .card__title {
-  font-weight: 600;
   grid-column: 1/2;
   grid-row: 1/2;
 }
