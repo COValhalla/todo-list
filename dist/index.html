@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo Lists</title>
     <link rel="stylesheet" href="../styles.css" />
-    <script defer src="main.js"></script>
-  </head>
+  <script defer src="main.js"></script></head>
   <body>
     <div class="container">
       <div class="sidebar">
@@ -23,17 +22,13 @@
           <div class="sidebar__projects__default">
             <button class="btn">Default Project</button>
           </div>
-          <div class="sidebar__projects__default">
-            <button class="btn">Default Project</button>
-          </div>
-          <div class="sidebar__projects__default">
-            <button class="btn">Default Project</button>
-          </div>
         </div>
       </div>
       <div class="main">
         <div class="main__projects">
-          <div class="main__projects__title">The Odin Project</div>
+          <div class="main__projects__title">Default Project</div>
+          <div class="main__projects__edit">Edit Project</div>
+
           <div class="main__projects__description">
             The Odin Project (TOP) is a open-source curriculum for training
             full-stack developers.The Odin Project (TOP) is a open-source
@@ -44,30 +39,21 @@
           </div>
         </div>
         <div class="main__todos">
-          <div class="main__todos__card project1">
+          <div class="main__todos__card small">
             <div class="card__title">Complete grocery list</div>
-            <div class="card__description">
-              Pick out two meals for this week. Place ingredients on shopping
-              list and tell Katie when its completed.
-            </div>
-            <div class="card__dueDate">Due Date: 08/15/22</div>
-            <div class="card__priority">Priority: High</div>
-            <div class="card__delete">
-              <button class="btn btnDelete">delete</button>
-            </div>
+            <div class="card__dueDate">Due: 08/15/22</div>
+            <div class="card__edit">Expand Todo</div>
           </div>
 
-          <div class="main__todos__card project1">
+          <div class="main__todos__card expanded">
             <div class="card__title">Complete grocery list</div>
+            <div class="card__dueDate">Due: 08/15/22</div>
+            <div class="card__edit">Save Todo</div>
             <div class="card__description">
               Pick out two meals for this week. Place ingredients on shopping
               list and tell Katie when its completed.
             </div>
-            <div class="card__dueDate">Due Date: 08/15/22</div>
-            <div class="card__priority">Priority: High</div>
-            <div class="card__delete">
-              <button class="btn btnDelete">delete</button>
-            </div>
+            <div class="card__delete">Delete</div>
           </div>
         </div>
       </div>

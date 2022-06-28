@@ -41,4 +41,3 @@ export default function newTodo(
   todoStorage.push(aNewTodo);
   addTodoDOM(aNewTodo);
 }
-// more functions...
