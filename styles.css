@@ -19,6 +19,7 @@
   display: grid;
   grid-template-rows: 1fr 2fr;
   justify-content: center;
+  gap: 3rem;
 }
 .sidebar__create {
   grid-row: 1/2;

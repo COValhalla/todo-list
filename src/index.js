@@ -1,4 +1,4 @@
-import newTodo from './prototype';
+// import newTodo from './prototype';
 
 // Below creates 4 prototype todos
 
@@ -9,6 +9,23 @@ import newTodo from './prototype';
 
 // Psuedocode
 // On page load, create a default project and a default task within that project
+import createDefaultProject from './projects';
+import { addDefaultProjBtn, addDefaultProjMain, addTodoDOM } from './domManip';
+import { createDefaultTodo, findTodo } from './todos';
+
+// eslint-disable-next-line wrap-iife
+(function init() {
+  createDefaultProject();
+  addDefaultProjBtn();
+  addDefaultProjMain();
+  createDefaultTodo();
+  const defaultTodo = findTodo(1);
+  addTodoDOM(defaultTodo);
+})();
 // Create todo adds forms to the DOM, after filling them out
 // clicking finish updates them and remove the submit button
 // Create project clears DOM, adds new project to sidebar, adds form for filling out details
+
+// Uncertaintities
+// Edit project interaction, change to form?
+// contenteditable
