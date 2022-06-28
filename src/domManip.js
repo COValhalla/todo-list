@@ -1,32 +1,29 @@
 import { findProject } from './projects';
 import { findTodo } from './todos';
 
-function addDefaultProjBtn() {
+function addProjBtnDOM(obj) {
   const sidebarProjects = document.querySelector('.sidebar__projects');
   const defaultProject = document.createElement('div');
-  defaultProject.classList.add('sidebar__project', '1');
-
+  defaultProject.classList.add('sidebar__project', `${obj.projectID}`);
   const projectBtn = document.createElement('button');
   projectBtn.classList.add('btn');
-  projectBtn.textContent = 'Default Project';
+  projectBtn.textContent = `${obj.title}`;
   defaultProject.append(projectBtn);
 
   sidebarProjects.append(defaultProject);
 }
 
-function addDefaultProjMain() {
+function addProjMainDOM(obj) {
   const mainProjects = document.querySelector('.main__projects');
   const title = document.createElement('div');
   title.classList.add('main__projects__title');
-  title.textContent = 'Default Project';
+  title.textContent = obj.title;
   const edit = document.createElement('div');
   edit.classList.add('main__projects__edit');
   edit.textContent = 'Edit Project';
   const desc = document.createElement('div');
   desc.classList.add('main__projects__description');
-  desc.textContent =
-    'You can enter project descriptions! Click Edit Project in order to edit the project name and the description.';
-
+  desc.textContent = obj.desc;
   mainProjects.append(title, edit, desc);
 }
 
@@ -51,4 +48,4 @@ function addTodoDOM(obj) {
   todoSection.append(todoDIV);
 }
 
-export { addDefaultProjBtn, addDefaultProjMain, addTodoDOM };
+export { addProjBtnDOM, addProjMainDOM, addTodoDOM };

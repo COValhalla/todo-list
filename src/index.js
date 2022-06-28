@@ -9,15 +9,16 @@
 
 // Psuedocode
 // On page load, create a default project and a default task within that project
-import createDefaultProject from './projects';
-import { addDefaultProjBtn, addDefaultProjMain, addTodoDOM } from './domManip';
+import { createDefaultProject, findProject } from './projects';
+import { addProjBtnDOM, addProjMainDOM, addTodoDOM } from './domManip';
 import { createDefaultTodo, findTodo } from './todos';
 
 // eslint-disable-next-line wrap-iife
 (function init() {
   createDefaultProject();
-  addDefaultProjBtn();
-  addDefaultProjMain();
+  const defaultProject = findProject(1);
+  addProjBtnDOM(defaultProject);
+  addProjMainDOM(defaultProject);
   createDefaultTodo();
   const defaultTodo = findTodo(1);
   addTodoDOM(defaultTodo);
