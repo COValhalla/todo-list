@@ -1,13 +1,13 @@
 // Psuedocode
 // On page load, create a default project and a default task within that project
-import { createProject, findProject } from './projects';
+import { createProject, findProject, getProjects } from './projects';
 import {
   addProjBtnDOM,
   addProjMainDOM,
   addTodoDOM,
   editProjListener,
 } from './domManip';
-import { createTodo, findTodo } from './todos';
+import { createTodo, findTodo, getTodos } from './todos';
 
 // Initialiation of the default webpage
 // eslint-disable-next-line wrap-iife
@@ -33,6 +33,10 @@ import { createTodo, findTodo } from './todos';
   );
   const secondProject = findProject(2);
   addProjBtnDOM(secondProject);
+
+  // Debugging. Retrive current projects and todos
+  console.log(getProjects());
+  console.log(getTodos());
 })();
 
 // Add 'Edit Project' function - DONE

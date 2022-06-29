@@ -40,5 +40,14 @@ function updateProjObj(title, desc) {
 function getDisplayedProj() {
   return displayedProj;
 }
+function getProjects() {
+  return projectStorage;
+}
 
-export { createProject, findProject, updateProjObj, getDisplayedProj };
+export {
+  createProject,
+  findProject,
+  updateProjObj,
+  getDisplayedProj,
+  getProjects,
+};

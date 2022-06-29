@@ -35,5 +35,8 @@ function findTodo(id) {
   const foundTodo = todoStorage.find((element) => element.todoID === id);
   return foundTodo;
 }
+function getTodos() {
+  return todoStorage;
+}
 
-export { createTodo, findTodo };
+export { createTodo, findTodo, getTodos };
