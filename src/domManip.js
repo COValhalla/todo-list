@@ -4,6 +4,7 @@ import {
   findProject,
   updateDisplayedProj,
 } from './projects';
+import { findProjTodos } from './todos';
 
 function addProjBtnDOM(obj) {
   const sidebarProjects = document.querySelector('.sidebar__projects');
@@ -102,7 +103,10 @@ function switchProjListener() {
       element.addEventListener('click', () => {
         clearDOM();
         generateDOM(projID);
+        // Generate todos
+        findProjTodos(projID);
         updateDisplayedProj(projID);
+        // Need to add listeners again after clearing DOM and updating displaying project
         switchProjListener();
         editProjListener();
       });

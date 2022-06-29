@@ -36,8 +36,8 @@ import { createTodo, findTodo, getTodos } from './todos';
   switchProjListener();
 
   // Debugging. Retrive current projects and todos
-  console.log(getProjects());
-  console.log(getTodos());
+  console.log('Initial Projects: ', getProjects());
+  console.log('Initial Todos: ', getTodos());
 })();
 
 // Add 'Edit Project' function - DONE

@@ -1,4 +1,5 @@
-import { getDisplayedProj, findProject } from './projects';
+import { addTodoDOM } from './domManip';
+import { getDisplayedProj } from './projects';
 
 const todoStorage = [];
 
@@ -35,8 +36,17 @@ function findTodo(id) {
   const foundTodo = todoStorage.find((element) => element.todoID === id);
   return foundTodo;
 }
+
+function findProjTodos(projID) {
+  // Find all todos based on projID
+  todoStorage.forEach((element) => {
+    if (element.projectID === projID) {
+      addTodoDOM(element);
+    }
+  });
+}
 function getTodos() {
   return todoStorage;
 }
 
-export { createTodo, findTodo, getTodos };
+export { createTodo, findTodo, getTodos, findProjTodos };
