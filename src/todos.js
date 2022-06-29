@@ -1,10 +1,11 @@
 const todoStorage = [];
 
-const todoFactory = (title, description, dueDate, todoID) => ({
+const todoFactory = (title, description, dueDate, todoID, projectID) => ({
   title,
   description,
   dueDate,
   todoID,
+  projectID,
 });
 
 function createDefaultTodo() {
@@ -12,6 +13,7 @@ function createDefaultTodo() {
     'Example Todo',
     'You can enter todo descriptions!',
     '07/15/2022',
+    1,
     1,
   );
 

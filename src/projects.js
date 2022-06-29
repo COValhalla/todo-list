@@ -1,4 +1,5 @@
 const projectStorage = [];
+const currentProject = 1;
 
 function projectCounter() {
   if (typeof projectCounter.counter === 'undefined') {
@@ -31,4 +32,13 @@ function findProject(id) {
   return foundObj;
 }
 
-export { createDefaultProject, findProject };
+function updateProject(title, desc) {
+  const foundIndex = projectStorage.findIndex(
+    (element) => element.projectID === currentProject,
+  );
+  projectStorage[foundIndex].title = title;
+  projectStorage[foundIndex].desc = desc;
+  console.log(projectStorage);
+}
+
+export { createDefaultProject, findProject, updateProject };

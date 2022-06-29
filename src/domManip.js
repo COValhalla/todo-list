@@ -1,5 +1,4 @@
-import { findProject } from './projects';
-import { findTodo } from './todos';
+import { updateProject } from './projects';
 
 function addProjBtnDOM(obj) {
   const sidebarProjects = document.querySelector('.sidebar__projects');
@@ -30,7 +29,7 @@ function addProjMainDOM(obj) {
 function addTodoDOM(obj) {
   const todoSection = document.querySelector('.main__todos');
   const todoDIV = document.createElement('div');
-  todoDIV.classList.add('main__todos__card', 'small', `${obj.todoID}`);
+  todoDIV.classList.add('main__todos__card', 'small', `${obj.projectID}`);
 
   const title = document.createElement('div');
   title.classList.add('card__title');
@@ -48,4 +47,34 @@ function addTodoDOM(obj) {
   todoSection.append(todoDIV);
 }
 
-export { addProjBtnDOM, addProjMainDOM, addTodoDOM };
+function editProjListener() {
+  const editProj = document.querySelector('.main__projects__edit');
+  editProj.addEventListener('click', () => {
+    const title = document.querySelector('.main__projects__title');
+    const desc = document.querySelector('.main__projects__description');
+    if (editProj.textContent === 'Edit Project') {
+      title.setAttribute('contenteditable', true);
+      desc.setAttribute('contenteditable', true);
+      editProj.textContent = 'Save Project';
+    } else if (editProj.textContent === 'Save Project') {
+      title.setAttribute('contenteditable', false);
+      desc.setAttribute('contenteditable', false);
+      editProj.textContent = 'Edit Project';
+      updateProject(title.textContent, desc.textContent);
+    }
+  });
+}
+
+function createTodoListener() {
+  const button = document.querySelector('.btnTodo');
+  button.addEventListener('click', () => {
+    // Get current Project ID for assignment
+  });
+}
+
+function createProjListener() {
+  const button = document.querySelector('.btnProject');
+  button.addEventListener('click', () => {});
+}
+
+export { addProjBtnDOM, addProjMainDOM, addTodoDOM, editProjListener };

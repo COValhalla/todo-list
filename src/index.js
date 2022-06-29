@@ -1,18 +1,15 @@
-// import newTodo from './prototype';
-
-// Below creates 4 prototype todos
-
-// newTodo('a title', 'a description', '08/15/22', 'low', 'project title');
-// newTodo('a title2', 'a description2', '08/15/22', 'low', 'project title2');
-// newTodo('a title3', 'a description3', '08/15/22', 'low', 'project title3');
-// newTodo('a title5', 'a description3', '08/15/22', 'low', 'project title3');
-
 // Psuedocode
 // On page load, create a default project and a default task within that project
 import { createDefaultProject, findProject } from './projects';
-import { addProjBtnDOM, addProjMainDOM, addTodoDOM } from './domManip';
+import {
+  addProjBtnDOM,
+  addProjMainDOM,
+  addTodoDOM,
+  editProjListener,
+} from './domManip';
 import { createDefaultTodo, findTodo } from './todos';
 
+// Initialiation of the default webpage
 // eslint-disable-next-line wrap-iife
 (function init() {
   createDefaultProject();
@@ -22,10 +19,18 @@ import { createDefaultTodo, findTodo } from './todos';
   createDefaultTodo();
   const defaultTodo = findTodo(1);
   addTodoDOM(defaultTodo);
+  editProjListener();
 })();
-// Create todo adds forms to the DOM, after filling them out
-// clicking finish updates them and remove the submit button
-// Create project clears DOM, adds new project to sidebar, adds form for filling out details
+
+// Add 'Edit Project' function
+
+// Add 'Expand Todo' function
+
+// How to handle below two creations? Modal? contenteditable?
+// https://www.w3schools.com/howto/howto_js_popup_form.asp
+// Add 'Create Todo' function and add to currently displayed Project
+// Add 'Create Project' function, clear DOM, and update with new Project
+// On Project click, clear DOM, and update with clicked Project
 
 // Uncertaintities
 // Edit project interaction, change to form?
