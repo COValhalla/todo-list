@@ -3,9 +3,11 @@ import { updateProjObj, getDisplayedProj } from './projects';
 function addProjBtnDOM(obj) {
   const sidebarProjects = document.querySelector('.sidebar__projects');
   const defaultProject = document.createElement('div');
-  defaultProject.classList.add('sidebar__project', `${obj.projectID}`);
+  defaultProject.classList.add('sidebar__project');
+  defaultProject.setAttribute('id', `${obj.projectID}`);
   const projectBtn = document.createElement('button');
-  projectBtn.classList.add('btn', `${getDisplayedProj()}`);
+  projectBtn.classList.add('btn', 'btnSidebar');
+  projectBtn.setAttribute('id', `${obj.projectID}`);
   projectBtn.textContent = `${obj.title}`;
   defaultProject.append(projectBtn);
 
@@ -52,14 +54,28 @@ function clearDOM() {
   const projTitle = document.querySelector('.main__projects__title');
   const projDesc = document.querySelector('.main__projects__description');
   const projEdit = document.querySelector('.main__projects__edit');
-  projTitle.remove();
-  projDesc.remove();
-  projEdit.remove();
-  // Todo section
-  const allTodos = document.querySelector('.main__todos');
-  while (allTodos.firstChild) {
-    allTodos.removeChild(allTodos.firstChild);
+  if (projTitle !== null) {
+    projTitle.remove();
+    projDesc.remove();
+    projEdit.remove();
+    // Todo section
+    const allTodos = document.querySelector('.main__todos');
+    while (allTodos.firstChild) {
+      allTodos.removeChild(allTodos.firstChild);
+    }
   }
+}
+
+function switchProjListener() {
+  const projs = document.querySelectorAll('.btnSidebar');
+  Array.from(projs).forEach((element) => {
+    const projID = Math.floor(element.id);
+    if (projID !== getDisplayedProj()) {
+      element.addEventListener('click', () => {
+        clearDOM();
+      });
+    }
+  });
 }
 
 function editProjListener() {
@@ -103,4 +119,5 @@ export {
   addTodoDOM,
   clearDOM,
   editProjListener,
+  switchProjListener,
 };

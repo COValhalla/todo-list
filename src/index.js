@@ -6,6 +6,7 @@ import {
   addProjMainDOM,
   addTodoDOM,
   editProjListener,
+  switchProjListener,
 } from './domManip';
 import { createTodo, findTodo, getTodos } from './todos';
 
@@ -14,9 +15,8 @@ import { createTodo, findTodo, getTodos } from './todos';
 (function init() {
   // Creating default project
   createProject('Default Project', 'You can enter a project description here!');
-  const firstProject = findProject(1);
-  addProjBtnDOM(firstProject);
-  addProjMainDOM(firstProject);
+  addProjBtnDOM(findProject(1));
+  addProjMainDOM(findProject(1));
   createTodo(
     'A default todo',
     'You can enter a longer description/details for your todo here.',
@@ -31,8 +31,9 @@ import { createTodo, findTodo, getTodos } from './todos';
     'Another Project',
     'Here is another project with a different description',
   );
-  const secondProject = findProject(2);
-  addProjBtnDOM(secondProject);
+  addProjBtnDOM(findProject(2));
+
+  switchProjListener();
 
   // Debugging. Retrive current projects and todos
   console.log(getProjects());
