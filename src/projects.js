@@ -1,5 +1,5 @@
 const projectStorage = [];
-const displayedProj = 1;
+let displayedProj = 1;
 
 function projectCounter() {
   if (typeof projectCounter.counter === 'undefined') {
@@ -40,6 +40,9 @@ function updateProjObj(title, desc) {
 function getDisplayedProj() {
   return displayedProj;
 }
+function updateDisplayedProj(projID) {
+  displayedProj = projID;
+}
 function getProjects() {
   return projectStorage;
 }
@@ -50,4 +53,5 @@ export {
   updateProjObj,
   getDisplayedProj,
   getProjects,
+  updateDisplayedProj,
 };

@@ -1,10 +1,14 @@
-import { updateProjObj, getDisplayedProj } from './projects';
+import {
+  updateProjObj,
+  getDisplayedProj,
+  findProject,
+  updateDisplayedProj,
+} from './projects';
 
 function addProjBtnDOM(obj) {
   const sidebarProjects = document.querySelector('.sidebar__projects');
   const defaultProject = document.createElement('div');
   defaultProject.classList.add('sidebar__project');
-  defaultProject.setAttribute('id', `${obj.projectID}`);
   const projectBtn = document.createElement('button');
   projectBtn.classList.add('btn', 'btnSidebar');
   projectBtn.setAttribute('id', `${obj.projectID}`);
@@ -66,6 +70,12 @@ function clearDOM() {
   }
 }
 
+function generateDOM(projID) {
+  // loop through projects
+  const proj = findProject(projID);
+  addProjMainDOM(proj);
+}
+
 function switchProjListener() {
   const projs = document.querySelectorAll('.btnSidebar');
   Array.from(projs).forEach((element) => {
@@ -73,6 +83,8 @@ function switchProjListener() {
     if (projID !== getDisplayedProj()) {
       element.addEventListener('click', () => {
         clearDOM();
+        generateDOM(projID);
+        updateDisplayedProj(projID);
       });
     }
   });
@@ -80,9 +92,7 @@ function switchProjListener() {
 
 function editProjListener() {
   const editProj = document.querySelector('.main__projects__edit');
-  const projSidebar = document.getElementsByClassName(
-    `btn ${getDisplayedProj()}`,
-  );
+  const projSidebar = document.getElementById(`${getDisplayedProj()}`);
   editProj.addEventListener('click', () => {
     const title = document.querySelector('.main__projects__title');
     const desc = document.querySelector('.main__projects__description');
@@ -94,7 +104,7 @@ function editProjListener() {
       title.setAttribute('contenteditable', false);
       desc.setAttribute('contenteditable', false);
       editProj.textContent = 'Edit Project';
-      projSidebar[0].textContent = title.textContent;
+      projSidebar.textContent = title.textContent;
       updateProjObj(title.textContent, desc.textContent);
     }
   });

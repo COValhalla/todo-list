@@ -1,4 +1,4 @@
-import { getDisplayedProj } from './projects';
+import { getDisplayedProj, findProject } from './projects';
 
 const todoStorage = [];
 
