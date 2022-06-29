@@ -39,12 +39,28 @@ function findTodo(id) {
 
 function findProjTodos(projID) {
   // Find all todos based on projID
-  todoStorage.forEach((element) => {
-    if (element.projectID === projID) {
-      addTodoDOM(element);
-    }
-  });
+  const foundTodos = todoStorage.filter((obj) => obj.projectID === projID);
+  return foundTodos;
 }
+
+const objects = [];
+const test1 = {
+  project: 1,
+  name: 'Joe',
+};
+const test2 = {
+  project: 2,
+  name: 'Joey',
+};
+const test3 = {
+  project: 1,
+  name: 'Joseph',
+};
+objects.push(test1, test2, test3);
+objects;
+
+const foundProj = objects.filter((obj) => obj.project === 1);
+
 function getTodos() {
   return todoStorage;
 }

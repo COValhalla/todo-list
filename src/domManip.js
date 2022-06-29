@@ -52,6 +52,9 @@ function addTodoDOM(obj) {
   todoDIV.append(title, dueDate, edit);
   todoSection.append(todoDIV);
 }
+function addAllTodosDOM(array) {
+  array.forEach((element) => addTodoDOM(element));
+}
 
 function clearDOM() {
   // Project section
@@ -71,9 +74,12 @@ function clearDOM() {
 }
 
 function generateDOM(projID) {
-  // loop through projects
   const proj = findProject(projID);
   addProjMainDOM(proj);
+
+  const projTodos = findProjTodos(projID);
+  addAllTodosDOM(projTodos);
+  updateDisplayedProj(projID);
 }
 
 function editProjListener() {
@@ -103,9 +109,6 @@ function switchProjListener() {
       element.addEventListener('click', () => {
         clearDOM();
         generateDOM(projID);
-        // Generate todos
-        findProjTodos(projID);
-        updateDisplayedProj(projID);
         // Need to add listeners again after clearing DOM and updating displaying project
         switchProjListener();
         editProjListener();
