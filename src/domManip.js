@@ -1,11 +1,11 @@
-import { updateProject } from './projects';
+import { updateProjObj, getDisplayedProj } from './projects';
 
 function addProjBtnDOM(obj) {
   const sidebarProjects = document.querySelector('.sidebar__projects');
   const defaultProject = document.createElement('div');
   defaultProject.classList.add('sidebar__project', `${obj.projectID}`);
   const projectBtn = document.createElement('button');
-  projectBtn.classList.add('btn');
+  projectBtn.classList.add('btn', `${getDisplayedProj()}`);
   projectBtn.textContent = `${obj.title}`;
   defaultProject.append(projectBtn);
 
@@ -49,6 +49,9 @@ function addTodoDOM(obj) {
 
 function editProjListener() {
   const editProj = document.querySelector('.main__projects__edit');
+  const projSidebar = document.getElementsByClassName(
+    `btn ${getDisplayedProj()}`,
+  );
   editProj.addEventListener('click', () => {
     const title = document.querySelector('.main__projects__title');
     const desc = document.querySelector('.main__projects__description');
@@ -60,7 +63,8 @@ function editProjListener() {
       title.setAttribute('contenteditable', false);
       desc.setAttribute('contenteditable', false);
       editProj.textContent = 'Edit Project';
-      updateProject(title.textContent, desc.textContent);
+      projSidebar[0].textContent = title.textContent;
+      updateProjObj(title.textContent, desc.textContent);
     }
   });
 }
