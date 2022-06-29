@@ -1,28 +1,42 @@
 // Psuedocode
 // On page load, create a default project and a default task within that project
-import { createDefaultProject, findProject } from './projects';
+import { createProject, findProject } from './projects';
 import {
   addProjBtnDOM,
   addProjMainDOM,
   addTodoDOM,
   editProjListener,
 } from './domManip';
-import { createDefaultTodo, findTodo } from './todos';
+import { createTodo, findTodo } from './todos';
 
 // Initialiation of the default webpage
 // eslint-disable-next-line wrap-iife
 (function init() {
-  createDefaultProject();
-  const defaultProject = findProject(1);
-  addProjBtnDOM(defaultProject);
-  addProjMainDOM(defaultProject);
-  createDefaultTodo();
+  // Creating default project
+  createProject('Default Project', 'You can enter a project description here!');
+  const firstProject = findProject(1);
+  addProjBtnDOM(firstProject);
+  addProjMainDOM(firstProject);
+  createTodo(
+    'A default todo',
+    'You can enter a longer description/details for your todo here.',
+    '08/15/2022',
+  );
   const defaultTodo = findTodo(1);
   addTodoDOM(defaultTodo);
   editProjListener();
+
+  // creating 2nd project example
+  createProject(
+    'Another Project',
+    'Here is another project with a different description',
+  );
+  const secondProject = findProject(2);
+  addProjBtnDOM(secondProject);
 })();
 
-// Add 'Edit Project' function
+// Add 'Edit Project' function - DONE
+// Add project switching
 
 // Add 'Expand Todo' function
 

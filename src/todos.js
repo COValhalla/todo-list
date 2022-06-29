@@ -1,4 +1,14 @@
+import { getDisplayedProj } from './projects';
+
 const todoStorage = [];
+
+function todoCounter() {
+  if (typeof todoCounter.counter === 'undefined') {
+    todoCounter.counter = 0;
+  }
+  todoCounter.counter += 1;
+  return todoCounter.counter;
+}
 
 const todoFactory = (title, description, dueDate, todoID, projectID) => ({
   title,
@@ -8,13 +18,14 @@ const todoFactory = (title, description, dueDate, todoID, projectID) => ({
   projectID,
 });
 
-function createDefaultTodo() {
+function createTodo(title, desc, dueDate) {
+  const todoID = todoCounter();
   const defaultTodo = todoFactory(
-    'Example Todo',
-    'You can enter todo descriptions!',
-    '07/15/2022',
-    1,
-    1,
+    title,
+    desc,
+    dueDate,
+    todoID,
+    getDisplayedProj(),
   );
 
   todoStorage.push(defaultTodo);
@@ -25,4 +36,4 @@ function findTodo(id) {
   return foundTodo;
 }
 
-export { createDefaultTodo, findTodo };
+export { createTodo, findTodo };

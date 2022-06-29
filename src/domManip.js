@@ -81,4 +81,5 @@ function createProjListener() {
   button.addEventListener('click', () => {});
 }
 
+// eslint-disable-next-line object-curly-newline
 export { addProjBtnDOM, addProjMainDOM, addTodoDOM, editProjListener };

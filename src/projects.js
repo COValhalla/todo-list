@@ -19,12 +19,9 @@ const projectFactory = (title, desc) => {
   };
 };
 
-function createDefaultProject() {
-  const defaultProject = projectFactory(
-    'Default Project',
-    'You can enter project descsription! Click Edit Project in order to edit the project name and the desc.',
-  );
-  projectStorage.push(defaultProject);
+function createProject(title, desc) {
+  const newProject = projectFactory(title, desc);
+  projectStorage.push(newProject);
 }
 
 function findProject(id) {
@@ -44,4 +41,4 @@ function getDisplayedProj() {
   return displayedProj;
 }
 
-export { createDefaultProject, findProject, updateProjObj, getDisplayedProj };
+export { createProject, findProject, updateProjObj, getDisplayedProj };

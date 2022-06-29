@@ -2,4 +2,4 @@
 
 Known issues:
 
-- No text controls on contenteditable
+- No text controls on contenteditable (Edit Project) and buttons
