@@ -14,7 +14,6 @@ function addProjBtnDOM(obj) {
   projectBtn.setAttribute('id', `${obj.projectID}`);
   projectBtn.textContent = `${obj.title}`;
   defaultProject.append(projectBtn);
-
   sidebarProjects.append(defaultProject);
 }
 
@@ -76,20 +75,6 @@ function generateDOM(projID) {
   addProjMainDOM(proj);
 }
 
-function switchProjListener() {
-  const projs = document.querySelectorAll('.btnSidebar');
-  Array.from(projs).forEach((element) => {
-    const projID = Math.floor(element.id);
-    if (projID !== getDisplayedProj()) {
-      element.addEventListener('click', () => {
-        clearDOM();
-        generateDOM(projID);
-        updateDisplayedProj(projID);
-      });
-    }
-  });
-}
-
 function editProjListener() {
   const editProj = document.querySelector('.main__projects__edit');
   const projSidebar = document.getElementById(`${getDisplayedProj()}`);
@@ -106,6 +91,21 @@ function editProjListener() {
       editProj.textContent = 'Edit Project';
       projSidebar.textContent = title.textContent;
       updateProjObj(title.textContent, desc.textContent);
+    }
+  });
+}
+function switchProjListener() {
+  const projs = document.querySelectorAll('.btnSidebar');
+  Array.from(projs).forEach((element) => {
+    const projID = Math.floor(element.id);
+    if (projID !== getDisplayedProj()) {
+      element.addEventListener('click', () => {
+        clearDOM();
+        generateDOM(projID);
+        updateDisplayedProj(projID);
+        switchProjListener();
+        editProjListener();
+      });
     }
   });
 }
