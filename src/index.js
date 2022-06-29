@@ -40,6 +40,7 @@ import { createTodo, findTodo, getTodos } from './todos';
 })();
 
 // Add 'Edit Project' function - DONE
+// Write function for clearing DOM -- DONE
 // Add project switching
 
 // Add 'Expand Todo' function
@@ -49,7 +50,3 @@ import { createTodo, findTodo, getTodos } from './todos';
 // Add 'Create Todo' function and add to currently displayed Project
 // Add 'Create Project' function, clear DOM, and update with new Project
 // On Project click, clear DOM, and update with clicked Project
-
-// Uncertaintities
-// Edit project interaction, change to form?
-// contenteditable

@@ -47,6 +47,21 @@ function addTodoDOM(obj) {
   todoSection.append(todoDIV);
 }
 
+function clearDOM() {
+  // Project section
+  const projTitle = document.querySelector('.main__projects__title');
+  const projDesc = document.querySelector('.main__projects__description');
+  const projEdit = document.querySelector('.main__projects__edit');
+  projTitle.remove();
+  projDesc.remove();
+  projEdit.remove();
+  // Todo section
+  const allTodos = document.querySelector('.main__todos');
+  while (allTodos.firstChild) {
+    allTodos.removeChild(allTodos.firstChild);
+  }
+}
+
 function editProjListener() {
   const editProj = document.querySelector('.main__projects__edit');
   const projSidebar = document.getElementsByClassName(
@@ -82,4 +97,10 @@ function createProjListener() {
 }
 
 // eslint-disable-next-line object-curly-newline
-export { addProjBtnDOM, addProjMainDOM, addTodoDOM, editProjListener };
+export {
+  addProjBtnDOM,
+  addProjMainDOM,
+  addTodoDOM,
+  clearDOM,
+  editProjListener,
+};
