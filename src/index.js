@@ -20,6 +20,7 @@ import {
   todoModalCancel,
   todoModalSubmit,
   storageAvailable,
+  generateDOM,
 } from './domManip';
 import {
   createTodo,
@@ -36,12 +37,17 @@ import {
     // Yippee! We can use localStorage awesomeness
     const projects = retrieveProjLocalStorag();
     updateProjects(projects);
+
+    const todos = retriveTodoLocalStorage();
+    console.log(todos);
+    updateTodos(todos);
+    // console.log(getTodos());
+
     projects.forEach((element) => {
       addProjBtnDOM(element);
     });
 
-    const todos = retriveTodoLocalStorage();
-    updateTodos(todos);
+    generateDOM(projects[0].projectID);
 
     // Generate all project buttons
     // Generate project DOM

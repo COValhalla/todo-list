@@ -238,4 +238,5 @@ export {
   projModalCancel,
   projModalSubmit,
   storageAvailable,
+  generateDOM,
 };

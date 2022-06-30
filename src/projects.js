@@ -31,7 +31,6 @@ function createProject(title, desc) {
   const newProject = projectFactory(title, desc);
   projectStorage.push(newProject);
   addProjLocalStorage();
-  retrieveProjLocalStorag();
   return newProject;
 }
 
@@ -59,7 +58,6 @@ function getProjects() {
   return projectStorage;
 }
 function updateProjects(projs) {
-  console.log(projs);
   projectStorage = projs;
 }
 
