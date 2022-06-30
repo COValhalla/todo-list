@@ -149,9 +149,12 @@ function todoModalSubmit() {
     const desc = form.elements[1].value;
     const dueDate = form.elements[2].value;
 
-    const newTodo = createTodo(title, desc, dueDate);
-    addTodoDOM(newTodo);
-    closeForm();
+    if (title !== '' && desc !== '' && dueDate !== '') {
+      const newTodo = createTodo(title, desc, dueDate);
+      addTodoDOM(newTodo);
+      closeForm();
+    }
+
     // test
   });
 }
