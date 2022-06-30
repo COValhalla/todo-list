@@ -10,7 +10,7 @@
   <body>
     <div class="container">
       <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
+        <form onsubmit="return false;" class="form-container" id="myForm1">
           <h1>New Todo</h1>
 
           <label for="title"><b>Title</b></label>
@@ -26,7 +26,7 @@
           <label for="dueDate"><b>Due Date</b></label>
           <input type="text" placeholder="DD/MM/YY" name="dueDate" required />
 
-          <button type="submit" class="btn popup">Submit</button>
+          <button type="reset" class="btn submit popup">Submit</button>
           <button type="reset" class="btn cancel popup">Cancel</button>
         </form>
       </div>

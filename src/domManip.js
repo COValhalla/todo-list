@@ -4,7 +4,7 @@ import {
   findProject,
   updateDisplayedProj,
 } from './projects';
-import { findProjTodos } from './todos';
+import { findProjTodos, createTodo } from './todos';
 
 function addProjBtnDOM(obj) {
   const sidebarProjects = document.querySelector('.sidebar__projects');
@@ -141,6 +141,21 @@ function todoModalCancel() {
   button.addEventListener('click', () => closeForm());
 }
 
+function todoModalSubmit() {
+  const button = document.querySelector('.submit');
+  button.addEventListener('click', () => {
+    const form = document.getElementById('myForm1');
+    const title = form.elements[0].value;
+    const desc = form.elements[1].value;
+    const dueDate = form.elements[2].value;
+
+    const newTodo = createTodo(title, desc, dueDate);
+    addTodoDOM(newTodo);
+    closeForm();
+    // test
+  });
+}
+
 function createProjListener() {
   const button = document.querySelector('.btnProject');
   button.addEventListener('click', () => {});
@@ -156,6 +171,7 @@ export {
   switchProjListener,
   createTodoListener,
   todoModalCancel,
+  todoModalSubmit,
   closeForm,
   openForm,
 };
