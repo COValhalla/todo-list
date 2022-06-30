@@ -42,6 +42,7 @@ import { createTodo, findTodo, getTodos } from './todos';
   createTodoListener();
   todoModalCancel();
   todoModalSubmit();
+
   // Debugging. Retrive current projects and todos
   console.log('Initial Projects: ', getProjects());
   console.log('Initial Todos: ', getTodos());
@@ -49,13 +50,8 @@ import { createTodo, findTodo, getTodos } from './todos';
 
 // Add 'Edit Project' function - DONE
 // Write function for clearing DOM -- DONE
-// Add project switching -- DOM
-// Add new todos
+// Add project switching -- DONE
+// Add new todos -- DONE
 
-// Add 'Expand Todo' function
-
-// How to handle below two creations? Modal? contenteditable?
-// https://www.w3schools.com/howto/howto_js_popup_form.asp
-// Add 'Create Todo' function and add to currently displayed Project
 // Add 'Create Project' function, clear DOM, and update with new Project
-// On Project click, clear DOM, and update with clicked Project
+// Add 'Expand Todo' function
