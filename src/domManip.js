@@ -119,10 +119,12 @@ function switchProjListener() {
 
 function openForm() {
   document.getElementById('myForm').style.display = 'block';
+  document.getElementById('myFormProj').style.display = 'none';
 }
 
 function closeForm() {
   document.getElementById('myForm').style.display = 'none';
+  document.getElementById('myFormProj').style.display = 'none';
 }
 
 function createTodoListener() {
@@ -164,7 +166,18 @@ function todoModalSubmit() {
 
 function createProjListener() {
   const button = document.querySelector('.btnProject');
-  button.addEventListener('click', () => {});
+  button.addEventListener('click', () => {
+    if (document.getElementById('myFormProj').style.display !== 'block') {
+      document.getElementById('myFormProj').style.display = 'block';
+    } else {
+      document.getElementById('myFormProj').style.display = 'none';
+    }
+  });
+}
+
+function projModalCancel() {
+  const button = document.querySelector('.projCancel');
+  button.addEventListener('click', () => closeForm());
 }
 
 // eslint-disable-next-line object-curly-newline
@@ -180,4 +193,6 @@ export {
   todoModalSubmit,
   closeForm,
   openForm,
+  createProjListener,
+  projModalCancel,
 };

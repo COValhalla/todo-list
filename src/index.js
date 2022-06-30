@@ -5,8 +5,10 @@ import {
   addProjBtnDOM,
   addProjMainDOM,
   addTodoDOM,
+  createProjListener,
   createTodoListener,
   editProjListener,
+  projModalCancel,
   switchProjListener,
   todoModalCancel,
   todoModalSubmit,
@@ -42,7 +44,9 @@ import { createTodo, findTodo, getTodos } from './todos';
   createTodoListener();
   todoModalCancel();
   todoModalSubmit();
-
+  // create new project
+  createProjListener();
+  projModalCancel();
   // Debugging. Retrive current projects and todos
   console.log('Initial Projects: ', getProjects());
   console.log('Initial Todos: ', getTodos());
