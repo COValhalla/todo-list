@@ -4,7 +4,7 @@ import {
   createProject,
   findProject,
   getProjects,
-  retriveProjLocalStorage,
+  retrieveProjLocalStorag,
   updateProjects,
 } from './projects';
 import {
@@ -21,15 +21,31 @@ import {
   todoModalSubmit,
   storageAvailable,
 } from './domManip';
-import { createTodo, findTodo, getTodos } from './todos';
+import {
+  createTodo,
+  findTodo,
+  getTodos,
+  retriveTodoLocalStorage,
+  updateTodos,
+} from './todos';
 
 // Initialiation of the default webpage
 // eslint-disable-next-line wrap-iife
 (function init() {
   if (storageAvailable('localStorage')) {
     // Yippee! We can use localStorage awesomeness
-    const projects = retriveProjLocalStorage();
+    const projects = retrieveProjLocalStorag();
     updateProjects(projects);
+    projects.forEach((element) => {
+      addProjBtnDOM(element);
+    });
+
+    const todos = retriveTodoLocalStorage();
+    updateTodos(todos);
+
+    // Generate all project buttons
+    // Generate project DOM
+    // Generate todo DOM of project
   } else {
     // Creating default project
     createProject(
@@ -70,7 +86,7 @@ import { createTodo, findTodo, getTodos } from './todos';
   }
 
   // addProjLocalStorage();
-  // retriveProjLocalStorage();
+  // retrieveProjLocalStorag();
 })();
 
 // Add 'Edit Project' function - DONE

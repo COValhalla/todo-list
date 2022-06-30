@@ -1,7 +1,7 @@
 import { addTodoDOM } from './domManip';
 import { getDisplayedProj } from './projects';
 
-const todoStorage = [];
+let todoStorage = [];
 
 function todoCounter() {
   if (typeof todoCounter.counter === 'undefined') {
@@ -19,11 +19,20 @@ const todoFactory = (title, description, dueDate, todoID, projectID) => ({
   projectID,
 });
 
+function addTodoLocalStorage() {
+  localStorage.setItem('todoStorage', JSON.stringify(todoStorage));
+}
+function retriveTodoLocalStorage() {
+  const retrievedObj = JSON.parse(localStorage.getItem('todoStorage'));
+  return retrievedObj;
+}
+
 function createTodo(title, desc, dueDate) {
   const todoID = todoCounter();
   const newTodo = todoFactory(title, desc, dueDate, todoID, getDisplayedProj());
 
   todoStorage.push(newTodo);
+  addTodoLocalStorage();
   return newTodo;
 }
 
@@ -41,5 +50,15 @@ function findProjTodos(projID) {
 function getTodos() {
   return todoStorage;
 }
+function updateTodos(todos) {
+  todoStorage = todos;
+}
 
-export { createTodo, findTodo, getTodos, findProjTodos };
+export {
+  createTodo,
+  findTodo,
+  getTodos,
+  findProjTodos,
+  retriveTodoLocalStorage,
+  updateTodos,
+};
