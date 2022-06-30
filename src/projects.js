@@ -22,6 +22,7 @@ const projectFactory = (title, desc) => {
 function createProject(title, desc) {
   const newProject = projectFactory(title, desc);
   projectStorage.push(newProject);
+  return newProject;
 }
 
 function findProject(id) {

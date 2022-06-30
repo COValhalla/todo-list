@@ -3,6 +3,7 @@ import {
   getDisplayedProj,
   findProject,
   updateDisplayedProj,
+  createProject,
 } from './projects';
 import { findProjTodos, createTodo } from './todos';
 
@@ -52,6 +53,7 @@ function addTodoDOM(obj) {
   todoDIV.append(title, dueDate, edit);
   todoSection.append(todoDIV);
 }
+
 function addAllTodosDOM(array) {
   array.forEach((element) => addTodoDOM(element));
 }
@@ -154,13 +156,8 @@ function todoModalSubmit() {
     if (title !== '' && desc !== '' && dueDate !== '') {
       const newTodo = createTodo(title, desc, dueDate);
       addTodoDOM(newTodo);
-      // form.elements[0].value = '';
-      // form.elements[1].value = '';
-      // form.elements[2].value = '';
       closeForm();
     }
-
-    // test
   });
 }
 
@@ -180,6 +177,23 @@ function projModalCancel() {
   button.addEventListener('click', () => closeForm());
 }
 
+function projModalSubmit() {
+  const button = document.querySelector('.projSubmit');
+  button.addEventListener('click', () => {
+    const form = document.getElementById('myForm2');
+    const title = form.elements[0].value;
+    const desc = form.elements[1].value;
+
+    if (title !== '' && desc !== '') {
+      const newProj = createProject(title, desc);
+      clearDOM();
+      generateDOM(newProj.projectID);
+      addProjBtnDOM(newProj);
+      closeForm();
+    }
+  });
+}
+
 // eslint-disable-next-line object-curly-newline
 export {
   addProjBtnDOM,
@@ -195,4 +209,5 @@ export {
   openForm,
   createProjListener,
   projModalCancel,
+  projModalSubmit,
 };
