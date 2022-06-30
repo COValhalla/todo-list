@@ -21,6 +21,7 @@ import {
   todoModalSubmit,
   storageAvailable,
   generateDOM,
+  addAllListeners,
 } from './domManip';
 import {
   createTodo,
@@ -33,26 +34,25 @@ import {
 // Initialiation of the default webpage
 // eslint-disable-next-line wrap-iife
 (function init() {
-  if (storageAvailable('localStorage')) {
-    // Yippee! We can use localStorage awesomeness
+  if (
+    localStorage.getItem('projectStorage') !== null &&
+    storageAvailable('localStorage')
+  ) {
+    console.log('Local Storage');
     const projects = retrieveProjLocalStorag();
     updateProjects(projects);
 
     const todos = retriveTodoLocalStorage();
-    console.log(todos);
     updateTodos(todos);
-    // console.log(getTodos());
 
     projects.forEach((element) => {
       addProjBtnDOM(element);
     });
 
     generateDOM(projects[0].projectID);
-
-    // Generate all project buttons
-    // Generate project DOM
-    // Generate todo DOM of project
+    addAllListeners();
   } else {
+    console.log('No Local Storage');
     // Creating default project
     createProject(
       'Default Project',
@@ -75,20 +75,7 @@ import {
     );
     addProjBtnDOM(findProject(2));
 
-    // Event listeners, eventually add into their own function
-    editProjListener();
-    switchProjListener();
-    // Create new todo
-    createTodoListener();
-    todoModalCancel();
-    todoModalSubmit();
-    // create new project
-    createProjListener();
-    projModalCancel();
-    projModalSubmit();
-    // Debugging. Retrive current projects and todos
-    console.log('Initial Projects: ', getProjects());
-    console.log('Initial Todos: ', getTodos());
+    addAllListeners();
   }
 
   // addProjLocalStorage();

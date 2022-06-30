@@ -194,6 +194,19 @@ function projModalSubmit() {
   });
 }
 
+function addAllListeners() {
+  editProjListener();
+  switchProjListener();
+  // Create new todo
+  createTodoListener();
+  todoModalCancel();
+  todoModalSubmit();
+  // create new project
+  createProjListener();
+  projModalCancel();
+  projModalSubmit();
+}
+
 function storageAvailable(type) {
   let storage;
   try {
@@ -239,4 +252,5 @@ export {
   projModalSubmit,
   storageAvailable,
   generateDOM,
+  addAllListeners,
 };
