@@ -9,6 +9,28 @@
   <script defer src="main.js"></script></head>
   <body>
     <div class="container">
+      <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h1>New Todo</h1>
+
+          <label for="title"><b>Title</b></label>
+          <input type="text" placeholder="Enter Title" name="title" required />
+          <label for="desc"><b>Description</b></label>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            name="desc"
+            required
+          />
+
+          <label for="dueDate"><b>Due Date</b></label>
+          <input type="text" placeholder="DD/MM/YY" name="dueDate" required />
+
+          <button type="submit" class="btn popup">Submit</button>
+          <button type="reset" class="btn cancel popup">Cancel</button>
+        </form>
+      </div>
+
       <div class="sidebar">
         <div class="sidebar__create">
           <div class="sidebar__create__todo">

@@ -117,11 +117,28 @@ function switchProjListener() {
   });
 }
 
+function openForm() {
+  document.getElementById('myForm').style.display = 'block';
+}
+
+function closeForm() {
+  document.getElementById('myForm').style.display = 'none';
+}
+
 function createTodoListener() {
   const button = document.querySelector('.btnTodo');
   button.addEventListener('click', () => {
-    // Get current Project ID for assignment
+    if (document.getElementById('myForm').style.display !== 'block') {
+      document.getElementById('myForm').style.display = 'block';
+    } else {
+      document.getElementById('myForm').style.display = 'none';
+    }
   });
+}
+
+function todoModalCancel() {
+  const button = document.querySelector('.cancel');
+  button.addEventListener('click', () => closeForm());
 }
 
 function createProjListener() {
@@ -137,4 +154,8 @@ export {
   clearDOM,
   editProjListener,
   switchProjListener,
+  createTodoListener,
+  todoModalCancel,
+  closeForm,
+  openForm,
 };

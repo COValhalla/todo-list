@@ -5,8 +5,10 @@ import {
   addProjBtnDOM,
   addProjMainDOM,
   addTodoDOM,
+  createTodoListener,
   editProjListener,
   switchProjListener,
+  todoModalCancel,
 } from './domManip';
 import { createTodo, findTodo, getTodos } from './todos';
 
@@ -24,7 +26,6 @@ import { createTodo, findTodo, getTodos } from './todos';
   );
   const defaultTodo = findTodo(1);
   addTodoDOM(defaultTodo);
-  editProjListener();
 
   // creating 2nd project example
   createProject(
@@ -33,8 +34,12 @@ import { createTodo, findTodo, getTodos } from './todos';
   );
   addProjBtnDOM(findProject(2));
 
+  // Event listeners, eventually add into their own function
+  editProjListener();
   switchProjListener();
-
+  // Create new todo
+  createTodoListener();
+  todoModalCancel();
   // Debugging. Retrive current projects and todos
   console.log('Initial Projects: ', getProjects());
   console.log('Initial Todos: ', getTodos());
@@ -42,7 +47,8 @@ import { createTodo, findTodo, getTodos } from './todos';
 
 // Add 'Edit Project' function - DONE
 // Write function for clearing DOM -- DONE
-// Add project switching
+// Add project switching -- DOM
+// Add new todos
 
 // Add 'Expand Todo' function
 
