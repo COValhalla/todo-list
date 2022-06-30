@@ -19,9 +19,19 @@ const projectFactory = (title, desc) => {
   };
 };
 
+function addProjLocalStorage() {
+  localStorage.setItem('projectStorage', JSON.stringify(projectStorage));
+}
+function retriveProjLocalStorage() {
+  const retrievedObj = localStorage.getItem('projectStorage');
+  console.log(JSON.parse(retrievedObj));
+}
+
 function createProject(title, desc) {
   const newProject = projectFactory(title, desc);
   projectStorage.push(newProject);
+  addProjLocalStorage();
+  retriveProjLocalStorage();
   return newProject;
 }
 
@@ -56,4 +66,6 @@ export {
   getDisplayedProj,
   getProjects,
   updateDisplayedProj,
+  addProjLocalStorage,
+  retriveProjLocalStorage,
 };
