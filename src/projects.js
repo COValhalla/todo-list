@@ -1,4 +1,4 @@
-const projectStorage = [];
+let projectStorage = [];
 let displayedProj = 1;
 
 function projectCounter() {
@@ -23,8 +23,8 @@ function addProjLocalStorage() {
   localStorage.setItem('projectStorage', JSON.stringify(projectStorage));
 }
 function retriveProjLocalStorage() {
-  const retrievedObj = localStorage.getItem('projectStorage');
-  console.log(JSON.parse(retrievedObj));
+  const retrievedObj = JSON.parse(localStorage.getItem('projectStorage'));
+  return retrievedObj;
 }
 
 function createProject(title, desc) {
@@ -58,6 +58,10 @@ function updateDisplayedProj(projID) {
 function getProjects() {
   return projectStorage;
 }
+function updateProjects(projs) {
+  console.log(projs);
+  projectStorage = projs;
+}
 
 export {
   createProject,
@@ -68,4 +72,5 @@ export {
   updateDisplayedProj,
   addProjLocalStorage,
   retriveProjLocalStorage,
+  updateProjects,
 };

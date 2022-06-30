@@ -1,6 +1,12 @@
 // Psuedocode
 // On page load, create a default project and a default task within that project
-import { createProject, findProject, getProjects } from './projects';
+import {
+  createProject,
+  findProject,
+  getProjects,
+  retriveProjLocalStorage,
+  updateProjects,
+} from './projects';
 import {
   addProjBtnDOM,
   addProjMainDOM,
@@ -22,6 +28,8 @@ import { createTodo, findTodo, getTodos } from './todos';
 (function init() {
   if (storageAvailable('localStorage')) {
     // Yippee! We can use localStorage awesomeness
+    const projects = retriveProjLocalStorage();
+    updateProjects(projects);
   } else {
     // Creating default project
     createProject(
