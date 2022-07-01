@@ -27,6 +27,7 @@ import {
   getTodos,
   retriveTodoLocalStorage,
   updateTodos,
+  todoCounter,
 } from './todos';
 
 // Initialiation of the default webpage
@@ -37,7 +38,6 @@ import {
     localStorage.getItem('projectStorage') !== null &&
     storageAvailable('localStorage')
   ) {
-    console.log('Local Storage');
     const projects = retrieveProjLocalStorag();
     updateProjects(projects);
 
@@ -49,13 +49,22 @@ import {
     });
 
     // Set project counter
-    let temp = 0;
+    let tempProj = 0;
     projects.forEach((element) => {
-      if (temp <= element.projectID) {
-        temp = element.projectID;
+      if (tempProj <= element.projectID) {
+        tempProj = element.projectID;
       }
     });
-    projectCounter().setProjectCounter(temp);
+    projectCounter().setProjectCounter(tempProj);
+
+    // Set todo counter
+    let tempTodo = 0;
+    todos.forEach((element) => {
+      if (tempTodo <= element.todoID) {
+        tempTodo = element.todoID;
+      }
+    });
+    todoCounter().setTodoCounter(tempTodo);
 
     generateDOM(projects[0].projectID);
     addAllListeners();

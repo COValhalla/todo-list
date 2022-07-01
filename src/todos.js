@@ -2,13 +2,16 @@ import { addTodoDOM } from './domManip';
 import { getDisplayedProj } from './projects';
 
 let todoStorage = [];
+let todoCount = 0;
 
 function todoCounter() {
-  if (typeof todoCounter.counter === 'undefined') {
-    todoCounter.counter = 0;
+  todoCount += 1;
+  localStorage.setItem('projectCounter', JSON.stringify(todoCount));
+
+  function setTodoCounter(num) {
+    todoCount = num;
   }
-  todoCounter.counter += 1;
-  return todoCounter.counter;
+  return { todoCount, setTodoCounter };
 }
 
 const todoFactory = (title, description, dueDate, todoID, projectID) => ({
@@ -28,9 +31,8 @@ function retriveTodoLocalStorage() {
 }
 
 function createTodo(title, desc, dueDate) {
-  const todoID = todoCounter();
+  const todoID = todoCounter().todoCount;
   const newTodo = todoFactory(title, desc, dueDate, todoID, getDisplayedProj());
-
   todoStorage.push(newTodo);
   addTodoLocalStorage();
   return newTodo;
@@ -61,4 +63,5 @@ export {
   findProjTodos,
   retriveTodoLocalStorage,
   updateTodos,
+  todoCounter,
 };

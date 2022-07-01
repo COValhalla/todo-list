@@ -5,13 +5,9 @@ let displayedProj = 1;
 // If project.counter undefined  && no local storage, start counting
 // else, find highest stored ID, then count
 
-function projectCounter(num) {
-  console.log('No storage, project counter working');
+function projectCounter() {
   projectCount += 1;
-  localStorage.setItem(
-    'projectCounter',
-    JSON.stringify(projectCounter.counter),
-  );
+  localStorage.setItem('projectCounter', JSON.stringify(projectCount));
 
   function setProjectCounter(num) {
     projectCount = num;
@@ -68,7 +64,6 @@ function getProjects() {
 }
 function updateProjects(projs) {
   projectStorage = projs;
-  console.log(projectStorage);
   // Set project counter
 }
 

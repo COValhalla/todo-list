@@ -185,7 +185,6 @@ function projModalSubmit() {
 
     if (title !== '' && desc !== '') {
       const newProj = createProject(title, desc);
-      console.log(newProj);
       clearDOM();
       generateDOM(newProj.projectID);
       addProjBtnDOM(newProj);
