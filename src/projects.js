@@ -50,7 +50,6 @@ function updateProjObj(title, desc) {
   );
   projectStorage[foundIndex].title = title;
   projectStorage[foundIndex].desc = desc;
-  console.log('Updated Projects: ', projectStorage);
 }
 
 function getDisplayedProj() {

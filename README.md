@@ -2,6 +2,7 @@
 
 Known issues:
 
+- Add expand todo feature, and delete todo button
 - No text controls on contenteditable (Edit Project) and buttons
 - Janky text controls on popup forms
 

@@ -4,8 +4,18 @@ import {
   findProject,
   updateDisplayedProj,
   createProject,
+  retrieveProjLocalStorag,
+  updateProjects,
+  projectCounter,
 } from './projects';
-import { findProjTodos, createTodo } from './todos';
+import {
+  findProjTodos,
+  createTodo,
+  findTodo,
+  retriveTodoLocalStorage,
+  updateTodos,
+  todoCounter,
+} from './todos';
 
 function addProjBtnDOM(obj) {
   const sidebarProjects = document.querySelector('.sidebar__projects');
@@ -233,8 +243,75 @@ function storageAvailable(type) {
   }
 }
 
+function createDefaultPage() {
+  createProject('Default Project', 'You can enter a project description here!');
+
+  addProjBtnDOM(findProject(1));
+  addProjMainDOM(findProject(1));
+  createTodo(
+    'A default todo',
+    'You can enter a longer description/details for your todo here.',
+    '08/15/2022',
+  );
+
+  const defaultTodo = findTodo(1);
+  addTodoDOM(defaultTodo);
+
+  // creating 2nd project example
+  createProject(
+    'Another Project',
+    'Here is another project with a different description',
+  );
+  addProjBtnDOM(findProject(2));
+
+  addAllListeners();
+}
+
+function createLocalStoragePage() {
+  if (
+    // Load saved projects and todos
+    localStorage.getItem('projectStorage') !== null &&
+    storageAvailable('localStorage')
+  ) {
+    const projects = retrieveProjLocalStorag();
+    updateProjects(projects);
+
+    const todos = retriveTodoLocalStorage();
+    updateTodos(todos);
+
+    projects.forEach((element) => {
+      addProjBtnDOM(element);
+    });
+
+    // Set project counter
+    let tempProj = 0;
+    projects.forEach((element) => {
+      if (tempProj <= element.projectID) {
+        tempProj = element.projectID;
+      }
+    });
+    projectCounter().setProjectCounter(tempProj);
+
+    // Set todo counter
+    let tempTodo = 0;
+    todos.forEach((element) => {
+      if (tempTodo <= element.todoID) {
+        tempTodo = element.todoID;
+      }
+    });
+    todoCounter().setTodoCounter(tempTodo);
+
+    generateDOM(projects[0].projectID);
+    addAllListeners();
+  } else {
+    createDefaultPage();
+  }
+}
+
 // eslint-disable-next-line object-curly-newline
 export {
+  createDefaultPage,
+  createLocalStoragePage,
   addProjBtnDOM,
   addProjMainDOM,
   addTodoDOM,
