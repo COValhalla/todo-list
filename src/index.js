@@ -1,5 +1,3 @@
-// Psuedocode
-// On page load, create a default project and a default task within that project
 import {
   createProject,
   findProject,
@@ -35,6 +33,7 @@ import {
 // eslint-disable-next-line wrap-iife
 (function init() {
   if (
+    // Load saved projects and todos
     localStorage.getItem('projectStorage') !== null &&
     storageAvailable('localStorage')
   ) {
@@ -48,23 +47,29 @@ import {
     projects.forEach((element) => {
       addProjBtnDOM(element);
     });
+    console.log('Test', projects[0].projectID);
 
     generateDOM(projects[0].projectID);
     addAllListeners();
   } else {
+    // Generate default projects and todos
     console.log('No Local Storage');
     // Creating default project
+
     createProject(
       'Default Project',
       'You can enter a project description here!',
     );
+
     addProjBtnDOM(findProject(1));
+    console.log('here');
     addProjMainDOM(findProject(1));
     createTodo(
       'A default todo',
       'You can enter a longer description/details for your todo here.',
       '08/15/2022',
     );
+
     const defaultTodo = findTodo(1);
     addTodoDOM(defaultTodo);
 
@@ -89,4 +94,5 @@ import {
 // Add 'Create Project' function, clear DOM, and update with new Project -- DONE
 
 // Add 'Expand Todo' function
-// Add local storage
+// Add local storage -- IN PROGRESS
+// Fix project counters and todo counter generation

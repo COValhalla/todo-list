@@ -43,6 +43,8 @@ function findTodo(id) {
 
 function findProjTodos(projID) {
   // Find all todos based on projID
+  console.log(projID);
+  console.log('todo Failure here');
   const foundTodos = todoStorage.filter((obj) => obj.projectID === projID);
   return foundTodos;
 }
