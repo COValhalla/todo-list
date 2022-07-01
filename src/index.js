@@ -1,7 +1,7 @@
 import {
   createProject,
   findProject,
-  getProjects,
+  projectCounter,
   retrieveProjLocalStorag,
   updateProjects,
 } from './projects';
@@ -47,7 +47,15 @@ import {
     projects.forEach((element) => {
       addProjBtnDOM(element);
     });
-    console.log('Test', projects[0].projectID);
+
+    // Set project counter
+    let temp = 0;
+    projects.forEach((element) => {
+      if (temp <= element.projectID) {
+        temp = element.projectID;
+      }
+    });
+    projectCounter().setProjectCounter(temp);
 
     generateDOM(projects[0].projectID);
     addAllListeners();
@@ -62,7 +70,6 @@ import {
     );
 
     addProjBtnDOM(findProject(1));
-    console.log('here');
     addProjMainDOM(findProject(1));
     createTodo(
       'A default todo',

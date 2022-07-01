@@ -78,7 +78,6 @@ function clearDOM() {
 function generateDOM(projID) {
   const proj = findProject(projID);
   addProjMainDOM(proj);
-  console.log(projID);
   const projTodos = findProjTodos(projID);
   addAllTodosDOM(projTodos);
   updateDisplayedProj(projID);
@@ -186,6 +185,7 @@ function projModalSubmit() {
 
     if (title !== '' && desc !== '') {
       const newProj = createProject(title, desc);
+      console.log(newProj);
       clearDOM();
       generateDOM(newProj.projectID);
       addProjBtnDOM(newProj);

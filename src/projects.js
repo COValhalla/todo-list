@@ -1,39 +1,30 @@
 let projectStorage = [];
+let projectCount = 0;
 let displayedProj = 1;
 
 // If project.counter undefined  && no local storage, start counting
 // else, find highest stored ID, then count
 
-function projectCounter() {
-  if (
-    typeof projectCounter.counter === 'undefined' &&
-    localStorage.getItem('projectCounter') === null
-  ) {
-    console.log('No storage, project counter working');
-    projectCounter.counter = 0;
-    projectCounter.counter += 1;
-    localStorage.setItem(
-      'projectCounter',
-      JSON.stringify(projectCounter.counter),
-    );
-    return projectCounter.counter;
-  }
-  console.log('Local storage counter detected');
-  const test = JSON.parse(localStorage.getItem('projectStorage'));
-  console.log(test);
+function projectCounter(num) {
+  console.log('No storage, project counter working');
+  projectCount += 1;
+  localStorage.setItem(
+    'projectCounter',
+    JSON.stringify(projectCounter.counter),
+  );
 
-  projectCounter.counter += 1;
-  return projectCounter.counter;
+  function setProjectCounter(num) {
+    projectCount = num;
+  }
+  return { projectCount, setProjectCounter };
 }
 
 const projectFactory = (title, desc) => {
-  const projectTitle = () => console.log(title);
-  const projectID = projectCounter();
+  const projectID = projectCounter().projectCount;
   return {
     title,
     desc,
     projectID,
-    projectTitle,
   };
 };
 
@@ -53,7 +44,6 @@ function createProject(title, desc) {
 }
 
 function findProject(id) {
-  console.log(projectStorage[0]);
   const foundObj = projectStorage.find((element) => element.projectID === id);
   return foundObj;
 }
@@ -78,6 +68,8 @@ function getProjects() {
 }
 function updateProjects(projs) {
   projectStorage = projs;
+  console.log(projectStorage);
+  // Set project counter
 }
 
 export {
@@ -90,4 +82,5 @@ export {
   addProjLocalStorage,
   retrieveProjLocalStorag,
   updateProjects,
+  projectCounter,
 };
